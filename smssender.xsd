@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mhc="http://hu.mhc.khb.com/common"
+                   xmlns:sms="http://hu.mhc.khb.com/services/smssender"
+                   targetNamespace="http://hu.mhc.khb.com/services/smssender" elementFormDefault="qualified"
+                   attributeFormDefault="unqualified">
+        <xs:import namespace="http://hu.mhc.khb.com/common"/>
+        <xs:include schemaLocation="http://hu.mhc.khb.com/services/smssender/smssender-complextypes.xsd"/>
+
+        <xs:element name="SendSmsRq">
+                <xs:annotation>
+                        <xs:documentation>Sending SMS request</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                        <xs:complexContent>
+                                <xs:extension base="mhc:GeneralRq">
+                                        <xs:sequence>
+                                                <xs:element name="body" type="sms:SendSmsRqBodyType" minOccurs="1" maxOccurs="1"/>
+                                        </xs:sequence>
+                                </xs:extension>
+                        </xs:complexContent>
+                </xs:complexType>
+        </xs:element>
+        <xs:complexType name="SendSmsRqBodyType">
+                <xs:annotation>
+                        <xs:documentation>Sending SMS request message body</xs:documentation>
+                </xs:annotation>
+                <xs:sequence>
+                        <xs:element name="smsType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="phoneNumber" type="sms:phoneNumberSimpleType" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="smsText" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="smsMaskedText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="deliveryReport" type="xs:boolean" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="sendingTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="expirationTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="relatedCustomer" type="sms:relatedCustomerComplexType" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+        </xs:complexType>
+
+
+        <xs:element name="SendSmsRp">
+                <xs:annotation>
+                        <xs:documentation>Sending SMS reply message</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                        <xs:complexContent>
+                                <xs:extension base="mhc:GeneralRp">
+                                        <xs:sequence>
+                                                <xs:element name="body" type="sms:SendSmsRpBodyType" minOccurs="1" maxOccurs="1"/>
+                                        </xs:sequence>
+                                </xs:extension>
+                        </xs:complexContent>
+                </xs:complexType>
+        </xs:element>
+
+
+        <xs:complexType name="SendSmsRpBodyType">
+                <xs:annotation>
+                        <xs:documentation>Sending SMS reply message body</xs:documentation>
+                </xs:annotation>
+                <xs:sequence>
+                        <xs:element name="smsId" type="xs:long" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="smsType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="smsResponseType" type="sms:smsResponseTypeSimpleType" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="phoneNumber" type="sms:phoneNumberSimpleType" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="providerErrorCode" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="providerErrorText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="providerTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="deliveredTime" type="xs:dateTime" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+        </xs:complexType>
+
+
+        <xs:element name="IncomingSmsDg">
+                <xs:annotation>
+                        <xs:documentation>Sending SMS reply message</xs:documentation>
+                </xs:annotation>
+                <xs:complexType>
+                        <xs:complexContent>
+                                <xs:extension base="mhc:GeneralRp">
+                                        <xs:sequence>
+                                                <xs:element name="body" type="sms:IncomingSmsDgBodyType" minOccurs="1" maxOccurs="1"/>
+                                        </xs:sequence>
+                                </xs:extension>
+                        </xs:complexContent>
+                </xs:complexType>
+        </xs:element>
+
+        <xs:complexType name="IncomingSmsDgBodyType">
+                <xs:annotation>
+                        <xs:documentation>Sending SMS reply (datagram) message body</xs:documentation>
+                </xs:annotation>
+                <xs:sequence>
+                        <xs:element name="smsId" type="xs:long" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="smsType" type="xs:string" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="phoneNumber" type="sms:phoneNumberSimpleType" minOccurs="1" maxOccurs="1"/>
+                        <xs:element name="smsText" type="xs:string" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="deliveredTime" type="xs:dateTime" minOccurs="1" maxOccurs="1"/>
+                </xs:sequence>
+        </xs:complexType>
+
+</xs:schema>

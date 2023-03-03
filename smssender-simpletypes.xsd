@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   targetNamespace="http://hu.mhc.khb.com/services/smssender"
+                   elementFormDefault="qualified" attributeFormDefault="unqualified">
+        <xs:annotation>
+                <xs:documentation>SMS Sender simple types</xs:documentation>
+        </xs:annotation>
+
+        <xs:simpleType name="phoneNumberSimpleType">
+                <xs:restriction base="xs:string">
+                        <xs:maxLength value="15"/>
+                </xs:restriction>
+        </xs:simpleType>
+
+        <xs:simpleType name="smsResponseTypeSimpleType">
+                <xs:restriction base="xs:string">
+                        <xs:enumeration value="SMS_SENDER"/>
+                        <xs:enumeration value="PROVIDER"/>
+                        <xs:enumeration value="USER"/>
+                </xs:restriction>
+        </xs:simpleType>
+
+        <xs:simpleType name="cmdbIdSimpleType">
+                <xs:restriction base="xs:long">
+                        <xs:totalDigits value="11"/>
+                        <xs:fractionDigits value="0"/>
+                </xs:restriction>
+        </xs:simpleType>
+
+        <xs:simpleType name="eqIdSimpleType">
+                <xs:restriction base="xs:string">
+                        <xs:minLength value="6"/>
+                        <xs:maxLength value="6"/>
+                </xs:restriction>
+        </xs:simpleType>
+
+        <xs:simpleType name="zeusIdSimpleType">
+                <xs:restriction base="xs:string">
+                        <xs:minLength value="9"/>
+                        <xs:maxLength value="9"/>
+                </xs:restriction>
+        </xs:simpleType>
+
+        <xs:simpleType name="eIdSimpleType">
+                <xs:restriction base="xs:long">
+                        <xs:totalDigits value="8"/>
+                        <xs:fractionDigits value="0"/>
+                </xs:restriction>
+        </xs:simpleType>
+
+</xs:schema>

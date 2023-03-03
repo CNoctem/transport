@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:sms="http://hu.mhc.khb.com/services/smssender"
+                   targetNamespace="http://hu.mhc.khb.com/services/smssender" elementFormDefault="qualified"
+                   attributeFormDefault="unqualified">
+        <xs:include schemaLocation="http://hu.mhc.khb.com/services/smssender/smssender-simpletypes.xsd"/>
+
+
+        <xs:complexType name="relatedCustomerComplexType">
+                <xs:annotation>
+                        <xs:documentation>Customer id-s for connecting SMS with the customer</xs:documentation>
+                </xs:annotation>
+                <xs:sequence>
+                        <xs:element name="cmdbId" type="sms:cmdbIdSimpleType" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="eqId" type="sms:eqIdSimpleType" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="zeusId" type="sms:zeusIdSimpleType" minOccurs="0" maxOccurs="1"/>
+                        <xs:element name="eId" type="sms:eIdSimpleType" minOccurs="0" maxOccurs="1"/>
+                </xs:sequence>
+        </xs:complexType>
+
+</xs:schema>
